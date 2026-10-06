@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Estudos Setoriais | FDC</title>
+
+  <style>
+
+    :root{
+      --azul:#12395f;
+      --azul-escuro:#0b2742;
+      --azul-claro:#eaf2f8;
+      --fundo:#f5f7f9;
+      --branco:#ffffff;
+      --texto:#263746;
+      --texto-secundario:#6d7d8b;
+      --borda:#dce4ea;
+      --dourado:#c5a061;
+      --verde:#eef7f0;
+      --sombra:0 10px 30px rgba(0,0,0,.06);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:"Segoe UI",Arial,sans-serif;
+      background:var(--fundo);
+      color:var(--texto);
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* ===============================
+       HEADER
+    =============================== */
+
+    .header{
+      background:linear-gradient(
+        135deg,
+        var(--azul-escuro),
+        var(--azul)
+      );
+
+      color:white;
+      padding:70px 20px 90px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .header::before{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      background:rgba(255,255,255,.04);
+      right:-150px;
+      top:-180px;
+    }
+
+    .header::after{
+      content:"";
+      position:absolute;
+      width:250px;
+      height:250px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:50%;
+      left:8%;
+      bottom:-130px;
+    }
+
+    .header-content{
+      max-width:1200px;
+      margin:auto;
+      position:relative;
+      z-index:2;
+    }
+
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.4px;
+      font-weight:700;
+      padding:7px 13px;
+      border-radius:30px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.18);
+      margin-bottom:20px;
+    }
+
+    .header h1{
+      font-size:clamp(34px,5vw,56px);
+      margin-bottom:18px;
+      line-height:1.1;
+    }
+
+    .header p{
+      max-width:760px;
+      color:rgba(255,255,255,.8);
+      font-size:17px;
+    }
+
+    /* ===============================
+       CONTAINER
+    =============================== */
+
+    .container{
+      width:min(1200px,calc(100% - 40px));
+      margin:-40px auto 80px;
+      position:relative;
+      z-index:5;
+    }
+
+    /* ===============================
+       COLETÂNEA
+    =============================== */
+
+    .principal{
+      background:white;
+      border-radius:20px;
+      box-shadow:var(--sombra);
+      border:1px solid var(--borda);
+
+      padding:34px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:25px;
+
+      margin-bottom:55px;
+    }
+
+    .principal-left{
+      display:flex;
+      align-items:center;
+      gap:22px;
+    }
+
+    .principal-icon{
+      width:78px;
+      height:78px;
+      min-width:78px;
+
+      border-radius:18px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:36px;
+
+      background:var(--azul-claro);
+    }
+
+    .principal small{
+      color:var(--dourado);
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:1.3px;
+      font-size:11px;
+    }
+
+    .principal h2{
+      color:var(--azul-escuro);
+      margin-top:3px;
+      margin-bottom:4px;
+      font-size:26px;
+    }
+
+    .principal p{
+      color:var(--texto-secundario);
+      font-size:14px;
+      max-width:650px;
+    }
+
+    .btn{
+      background:var(--azul);
+      color:white;
+      padding:14px 22px;
+      border-radius:10px;
+      white-space:nowrap;
+      font-weight:600;
+      font-size:14px;
+      transition:.2s;
+    }
+
+    .btn:hover{
+      background:var(--azul-escuro);
+      transform:translateY(-2px);
+    }
+
+    /* ===============================
+       CABEÇALHO DA SEÇÃO
+    =============================== */
+
+    .section-title{
+      margin-bottom:25px;
+    }
+
+    .section-title small{
+      color:var(--dourado);
+      font-size:12px;
+      text-transform:uppercase;
+      font-weight:700;
+      letter-spacing:1.2px;
+    }
+
+    .section-title h2{
+      color:var(--azul-escuro);
+      font-size:30px;
+      margin-top:3px;
+    }
+
+    .section-title p{
+      color:var(--texto-secundario);
+      margin-top:5px;
+    }
+
+    /* ===============================
+       GRUPOS
+    =============================== */
+
+    .grupos{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .grupo{
+      background:white;
+      border:1px solid var(--borda);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 4px 15px rgba(0,0,0,.035);
+    }
+
+    .grupo > summary{
+      list-style:none;
+      cursor:pointer;
+
+      padding:22px 24px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+
+      background:white;
+
+      transition:.2s;
+    }
+
+    .grupo > summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .grupo > summary:hover{
+      background:#fafcfd;
+    }
+
+    .grupo[open] > summary{
+      border-bottom:1px solid var(--borda);
+    }
+
+    .grupo-info{
+      display:flex;
+      align-items:center;
+      gap:17px;
+    }
+
+    .grupo-icon{
+      width:52px;
+      height:52px;
+      min-width:52px;
+
+      border-radius:14px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:25px;
+
+      background:var(--azul-claro);
+    }
+
+    .grupo-info h3{
+      color:var(--azul-escuro);
+      font-size:18px;
+      margin-bottom:2px;
+    }
+
+    .grupo-info p{
+      color:var(--texto-secundario);
+      font-size:13px;
+    }
+
+    .grupo-arrow{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:var(--fundo);
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      color:var(--azul);
+      transition:.25s;
+    }
+
+    .grupo[open] > summary .grupo-arrow{
+      transform:rotate(180deg);
+      background:var(--azul-claro);
+    }
+
+    /* ===============================
+       ÁREA INTERNA DO GRUPO
+    =============================== */
+
+    .grupo-content{
+      padding:16px;
+      background:#f9fbfc;
+
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    /* ===============================
+       CADERNO
+    =============================== */
+
+    .caderno{
+      background:white;
+      border:1px solid var(--borda);
+      border-radius:13px;
+      overflow:hidden;
+    }
+
+    .caderno > summary{
+      list-style:none;
+      cursor:pointer;
+
+      padding:17px 18px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+
+      transition:.2s;
+    }
+
+    .caderno > summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .caderno > summary:hover{
+      background:#fbfcfd;
+    }
+
+    .caderno[open] > summary{
+      border-bottom:1px solid var(--borda);
+      background:#fbfcfd;
+    }
+
+    .caderno-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+ 
+
+    .emoji{
+      width:42px;
+      height:42px;
+      min-width:42px;
+
+      border-radius:10px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:20px;
+
+      background:var(--azul-claro);
+    }
+
+    .caderno h4{
+      color:var(--azul-escuro);
+      font-size:15px;
+    }
+
+    .caderno p{
+      color:var(--texto-secundario);
+      font-size:12px;
+    }
+
+    .arrow{
+      width:32px;
+      height:32px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      border-radius:50%;
+
+      background:var(--fundo);
+      color:var(--azul);
+
+      transition:.2s;
+    }
+
+    .caderno[open] .arrow{
+      transform:rotate(180deg);
+    }
+
+    /* ===============================
+       PDF
+    =============================== */
+
+    .pdf-box{
+      padding:16px;
+      background:#f8fafb;
+    }
+
+    .pdf-toolbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      margin-bottom:12px;
+    }
+
+    .pdf-toolbar span{
+      color:var(--texto-secundario);
+      font-size:12px;
+    }
+
+    .pdf-toolbar a{
+      background:white;
+      border:1px solid var(--borda);
+      color:var(--azul);
+      font-size:12px;
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:7px;
+    }
+
+    .pdf-toolbar a:hover{
+      border-color:var(--azul);
+      background:var(--azul-claro);
+    }
+
+    iframe{
+      width:100%;
+      height:700px;
+      border:none;
+      border-radius:10px;
+      background:#e3e7ea;
+    }
+
+    /* ===============================
+       RODAPÉ
+    =============================== */
+
+    footer{
+      background:var(--azul-escuro);
+      text-align:center;
+      color:rgba(255,255,255,.65);
+      padding:35px 20px;
+      font-size:13px;
+    }
+
+    footer strong{
+      color:white;
+    }
+
+    /* ===============================
+       RESPONSIVO
+    =============================== */
+
+    @media(max-width:800px){
+
+      .principal{
+        flex-direction:column;
+        align-items:stretch;
+        padding:25px;
+      }
+
+      .principal-left{
+        align-items:flex-start;
+      }
+
+      .btn{
+        width:100%;
+        text-align:center;
+      }
+
+      .grupo > summary{
+        padding:18px 16px;
+      }
+
+      .grupo-icon{
+        width:45px;
+        height:45px;
+        min-width:45px;
+      }
+
+      iframe{
+        height:580px;
+      }
+
+      .pdf-toolbar{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .pdf-toolbar a{
+        text-align:center;
+      }
+
+    }
+
+    @media(max-width:500px){
+
+      .container{
+        width:calc(100% - 20px);
+      }
+
+      .principal-icon{
+        display:none;
+      }
+
+      .grupo-info p{
+        display:none;
+      }
+
+      .numero{
+        display:none;
+      }
+
+      .emoji{
+        width:38px;
+        height:38px;
+        min-width:38px;
+      }
+
+      iframe{
+        height:500px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header-content">
+
+      <div class="tag">
+        Fundação Dom Cabral
+      </div>
+
+      <h1>
+        Estudos Setoriais
+      </h1>
+
+      <p>
+        Consulte a coletânea completa ou navegue pelos diferentes
+        grupos temáticos e acesse individualmente cada caderno do estudo.
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <main class="container">
+
+    <!-- COLETÂNEA PRINCIPAL -->
+
+    <section class="principal">
+
+      <div class="principal-left">
+
+        <div class="principal-icon">
+          📚
+        </div>
+
+        <div>
+
+          <small>
+            Documento principal
+          </small>
+
+          <h2>
+            Coletânea Completa
+          </h2>
+
+          <p>
+            Documento consolidado reunindo todos os cadernos,
+            análises e resultados desenvolvidos no estudo.
+          </p>
+
+        </div>
+
+      </div>
+
+      <a
+        href="pdfs/coletanea-completa.pdf"
+        target="_blank"
+        class="btn"
+      >
+        Visualizar coletânea ↗
+      </a>
+
+    </section>
+
+
+    <!-- TÍTULO -->
+
+    <section class="section-title">
+
+      <small>
+        Publicações
+      </small>
+
+      <h2>
+        Cadernos do Estudo
+      </h2>
+
+      <p>
+        Os cadernos foram organizados por grupos temáticos
+        para facilitar a consulta e a navegação.
+      </p>
+
+    </section>
+
+
+    <!-- GRUPOS -->
+
+    <div class="grupos">
+
+
+      <!-- ====================================================
+           AGRONEGÓCIO
+      ===================================================== -->
+
+      <details class="grupo">
+
+        <summary>
+
+          <div class="grupo-info">
+
+            <div class="grupo-icon">
+              🌾
+            </div>
+
+            <div>
+              <h3>Agronegócio e Alimentos</h3>
+              <p>
+                Grãos, alimentos, pecuária e insumos agrícolas
+              </p>
+            </div>
+
+          </div>
+
+          <div class="grupo-arrow">
+            ↓
+          </div>
+
+        </summary>
+
+
+        <div class="grupo-content">
+
+
+          <!-- CADERNO 05 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+                
+
+                <div class="emoji">
+                  🍽️
+                </div>
+
+                <div>
+                  <h4>Alimentos e Bebidas</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 05 • Alimentos e Bebidas
+                </span>
+
+                <a
+                  href="pdfs/caderno-05-alimentos-e-bebidas.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-05-alimentos-e-bebidas.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- CADERNO 06 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+              
+
+                <div class="emoji">
+                  🌱
+                </div>
+
+                <div>
+                  <h4>Soja em Grãos</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 06 • Soja em Grãos
+                </span>
+
+                <a
+                  href="pdfs/caderno-06-soja-em-graos.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-06-soja-em-graos.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- CADERNO 08 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+               
+
+                <div class="emoji">
+                  🌽
+                </div>
+
+                <div>
+                  <h4>Milho em Grãos</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 08 • Milho em Grãos
+                </span>
+
+                <a
+                  href="pdfs/caderno-08-milho-em-graos.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-08-milho-em-graos.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- CADERNO 10 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+                
+
+                <div class="emoji">
+                  🚜
+                </div>
+
+                <div>
+                  <h4>Outros da Lavoura e Pecuária</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 10 • Outros da Lavoura e Pecuária
+                </span>
+
+                <a
+                  href="pdfs/caderno-10-outros-da-lavoura-pecuaria.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-10-outros-da-lavoura-pecuaria.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- CADERNO 12 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+                
+
+                <div class="emoji">
+                  🌾
+                </div>
+
+                <div>
+                  <h4>Farelo de Soja</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 12 • Farelo de Soja
+                </span>
+
+                <a
+                  href="pdfs/caderno-12-farelo-de-soja.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-12-farelo-de-soja.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- CADERNO 15 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+             
+
+                <div class="emoji">
+                  🧪
+                </div>
+
+                <div>
+                  <h4>Fertilizantes Importados</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 15 • Fertilizantes Importados
+                </span>
+
+                <a
+                  href="pdfs/caderno-15-fertilizantes-importados.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-15-fertilizantes-importados.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+        </div>
+
+      </details>
+
+
+      <!-- ====================================================
+           MINERAÇÃO
+      ===================================================== -->
+
+      <details class="grupo">
+
+        <summary>
+
+          <div class="grupo-info">
+
+            <div class="grupo-icon">
+              ⛏️
+            </div>
+
+            <div>
+              <h3>Mineração, Materiais e Construção</h3>
+              <p>
+                Minerais, carvão e materiais de construção
+              </p>
+            </div>
+
+          </div>
+
+          <div class="grupo-arrow">
+            ↓
+          </div>
+
+        </summary>
+
+
+        <div class="grupo-content">
+
+
+          <!-- 01 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+               
+
+                <div class="emoji">
+                  ⛏️
+                </div>
+
+                <div>
+                  <h4>Minério de Ferro</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 01 • Minério de Ferro
+                </span>
+
+                <a
+                  href="pdfs/caderno-01-minerio-de-ferro.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-01-minerio-de-ferro.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- 04 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+                
+
+                <div class="emoji">
+                  💎
+                </div>
+
+                <div>
+                  <h4>Outros Minerais</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 04 • Outros Minerais
+                </span>
+
+                <a
+                  href="pdfs/caderno-04-outros-minerais.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-04-outros-minerais.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- 11 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+                
+
+                <div class="emoji">
+                  🏗️
+                </div>
+
+                <div>
+                  <h4>Cimento</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 11 • Cimento
+                </span>
+
+                <a
+                  href="pdfs/caderno-11-cimento.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-11-cimento.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- 14 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+              
+
+                <div class="emoji">
+                  ⚫
+                </div>
+
+                <div>
+                  <h4>Carvão Mineral</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 14 • Carvão Mineral
+                </span>
+
+                <a
+                  href="pdfs/caderno-14-carvao-mineral.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-14-carvao-mineral.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+        </div>
+
+      </details>
+
+
+      <!-- ====================================================
+           ENERGIA
+      ===================================================== -->
+
+      <details class="grupo">
+
+        <summary>
+
+          <div class="grupo-info">
+
+            <div class="grupo-icon">
+              ⚡
+            </div>
+
+            <div>
+              <h3>Energia, Petróleo e Química</h3>
+              <p>
+                Combustíveis e produtos petroquímicos
+              </p>
+            </div>
+
+          </div>
+
+          <div class="grupo-arrow">
+            ↓
+          </div>
+
+        </summary>
+
+
+        <div class="grupo-content">
+
+
+          <!-- 03 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+               
+
+                <div class="emoji">
+                  ⛽
+                </div>
+
+                <div>
+                  <h4>Combustíveis</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 03 • Combustíveis
+                </span>
+
+                <a
+                  href="pdfs/caderno-03-combustiveis.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-03-combustiveis.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- 07 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+               
+
+                <div class="emoji">
+                  🛢️
+                </div>
+
+                <div>
+                  <h4>Petro e Químicos</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 07 • Petro e Químicos
+                </span>
+
+                <a
+                  href="pdfs/caderno-07-petro-e-quimicos.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-07-petro-e-quimicos.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+        </div>
+
+      </details>
+
+
+      <!-- ====================================================
+           INDÚSTRIA
+      ===================================================== -->
+
+      <details class="grupo">
+
+        <summary>
+
+          <div class="grupo-info">
+
+            <div class="grupo-icon">
+              🏭
+            </div>
+
+            <div>
+              <h3>Indústria e Produtos Transformados</h3>
+              <p>
+                Manufatura, produtos básicos, papel e celulose
+              </p>
+            </div>
+
+          </div>
+
+          <div class="grupo-arrow">
+            ↓
+          </div>
+
+        </summary>
+
+
+        <div class="grupo-content">
+
+
+          <!-- 02 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+                
+
+                <div class="emoji">
+                  🏭
+                </div>
+
+                <div>
+                  <h4>Produtos Manufaturados</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 02 • Produtos Manufaturados
+                </span>
+
+                <a
+                  href="pdfs/caderno-02-produtos-manufaturados.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-02-produtos-manufaturados.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- 09 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+               
+
+                <div class="emoji">
+                  🧱
+                </div>
+
+                <div>
+                  <h4>Produtos Básicos</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 09 • Produtos Básicos
+                </span>
+
+                <a
+                  href="pdfs/caderno-09-produtos-basicos.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-09-produtos-basicos.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+
+          <!-- 13 -->
+
+          <details class="caderno">
+
+            <summary>
+
+              <div class="caderno-left">
+
+               
+
+                <div class="emoji">
+                  📄
+                </div>
+
+                <div>
+                  <h4>Papel e Celulose</h4>
+                  <p>Acessar caderno</p>
+                </div>
+
+              </div>
+
+              <span class="arrow">↓</span>
+
+            </summary>
+
+            <div class="pdf-box">
+
+              <div class="pdf-toolbar">
+
+                <span>
+                  Caderno 13 • Papel e Celulose
+                </span>
+
+                <a
+                  href="pdfs/caderno-13-papel-e-celulose.pdf"
+                  target="_blank"
+                >
+                  Abrir em nova aba ↗
+                </a>
+
+              </div>
+
+              <iframe
+                src="pdfs/caderno-13-papel-e-celulose.pdf"
+                loading="lazy">
+              </iframe>
+
+            </div>
+
+          </details>
+
+        </div>
+
+      </details>
+
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    <strong>
+      Fundação Dom Cabral
+    </strong>
+
+    <br>
+
+    Estudos e Publicações
+
+  </footer>
+
+</body>
+</html>
